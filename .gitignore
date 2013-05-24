@@ -1,0 +1,4 @@
+config.php
+songfiles/*
+piruloger/*
+templates/piruloger.tpl.php
