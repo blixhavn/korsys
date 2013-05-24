@@ -1,0 +1,434 @@
+h1, h2, h3, h4, h5 {
+		font-family: Times New Roman;
+}
+
+
+/************* Login *************/
+form#login {
+	position: relative;
+	text-align: center;
+	width: 270px;
+	margin: 100px auto;
+	padding: 35px 20px 10px 20px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	}
+	form#login  h2 {
+		background: white;
+		padding: 0px 7px;
+		position: absolute;
+		top: -30px;
+		left: 13px;
+		font-size: 1.5em;
+	}
+	form#login .checkbox {
+		text-align: left;
+		margin-left: 35px;
+		padding-left: 10px;
+		margin-bottom: 20px;
+	}
+
+
+/************* News *************/
+
+div.newsitem {
+	position: relative;
+	padding: 35px 20px 10px 20px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	}
+	div.newsitem h2 {
+		background: white;
+		padding: 0px 7px;
+		position: absolute;
+		top: -30px;
+		left: 13px;
+		font-size: 1.5em;
+	}
+	span.byline {
+		font-size: 0.8em;
+		font-style: italic;
+		color: grey;
+	}
+
+/************* Events *************/
+
+div.event {
+	position: relative;
+	padding: 35px 20px 10px 20px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	}
+	div.event h2 {
+		background: white;
+		padding: 0px 7px;
+		position: absolute;
+		top: -30px;
+		left: 13px;
+		font-size: 1.3em;
+	}
+	div.event_time {
+		font-size: 2.1em;
+		color: red;
+		margin-bottom: 15px;
+	}
+	
+	div.minusliste {
+		margin-top: 20px;
+	}
+	
+	div.minusfelt {
+		text-align: center;
+		display: none;
+		}
+		div.minusfelt textarea {
+			width: 300px;
+			height: 100px;
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}		
+
+/************* Sangarkiv *************/
+
+table#songs td {
+	}
+	td.plus {
+		width: 20px;
+		vertical-align: top;
+	}
+	td.last-opp {
+		width: 100px;
+		text-align: right;
+		vertical-align: top;
+	}
+	div.songfiles {
+		margin-top: 10px;	
+		display: none;
+		}
+		div.songfile {
+			padding-left: 25px;
+			}
+			div.songfile.mp3, div.songfile.MP3 {
+				background: url('../img/mp3.gif') left no-repeat;
+			}
+			div.songfile.mid, div.songfile.MID {
+				background: url('../img/midi.gif') left no-repeat;
+			}
+			div.songfile.wav, div.songfile.WAV {
+				background: url('../img/wav.gif') left no-repeat;
+			}
+/************* Personlig *************/
+
+div#saldo {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.3em;
+	font-family: "times new roman";
+	}
+	div#saldo_val {
+		margin-top: 10px;
+		font-size: 2em; 
+	}
+div#oppforinger h2{
+	font-weight: bold;
+	font-size: 1.7em;
+	}
+	th#beskrivelse {
+		width: 200px;
+		text-align:left;
+		border-bottom: 1px solid black;
+	}
+	th#belop {
+		text-align:right;
+		width: 70px;
+		border-bottom: 1px solid black;
+	}
+	td.belop {
+		text-align:right;
+	}
+	th#bilag {
+		text-align:right;
+		width: 70px;
+		border-bottom: 1px solid black;
+	}
+	td.right {
+		text-align:right;
+	}
+/************* Change info *************/
+
+.pw_required {
+	color: grey;
+	font-style: italic;
+	font-size: 0.8em;
+	margin-bottom: 0.5em;
+	margin-left: 180px;
+}
+
+/************* Add event *************/
+
+#new-event-date {
+	width: 80px !important;
+	margin-right: 30px;
+}
+#new-event-time-start {
+	width: 40px !important;
+	margin-right: 10px;
+}
+#new-event-time-end {
+	width: 40px !important;
+}
+
+/************* Minusmeldinger *************/
+
+div.minusevent {
+	position: relative;
+	padding: 35px 20px 10px 20px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	}
+	div.minusevent h2 {
+		background: white;
+		padding: 0px 7px;
+		position: absolute;
+		top: -30px;
+		left: 13px;
+		font-size: 1.3em;
+	}
+	div.minus-elem {
+		margin-bottom: 20px;
+	}
+	div.minus-elem .time {
+		color: red;
+	}
+	div.minus-elem .time.valid {
+		color:green;
+	}
+	div.minus-details {
+		display: inline-block;
+		width: 200px;
+		vertical-align: top;
+	}
+	div.minus-desc {
+		display: inline-block;
+		font-style: italic;
+		vertical-align: top;
+	}
+/************* Admin personlig *************/
+div#total-balanse {
+	text-align: center;
+	font-weight: bold;
+	font-family: Times New Roman;
+	font-size: 1.2em;
+	margin-bottom: 30px;
+}
+
+div#add-transaction {
+	position: relative;
+	padding: 40px 15px 15px 15px;
+	border: 1px solid black;
+	}
+	div#add-transaction h3 {
+		background: white;
+		padding: 0px 7px;
+		position: absolute;
+		top: -30px;
+		left: 13px;
+		font-size: 1.2em;
+		margin-bottom: 5px;
+	}
+div#user-total {
+	font-weight: bold;
+}
+/************* Oppdrag *************/
+
+.oppdrag h3 {
+	
+}
+
+.oppdrag .sted {
+	font-size: 1.3em;
+}
+.oppdrag .tid {
+	font-family: Times New Roman;
+	margin-top: 5px;
+	font-size: 1.8em;
+}
+.oppdrag .pris {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+/************* Faktura *************/
+#faktura-reg h3 {
+	text-align: left;
+}	
+#faktura-reg form {
+	margin: 0;
+}
+#faktura-reg input{
+	width: 485px;
+}
+ #faktura-reg textarea {
+	width: 511px;
+ }
+/************* Legg til oppdrag *************/
+
+#add-oppdrag #dato {
+	width: 80px !important;
+}
+#add-oppdrag #tid {
+	width: 40px !important;
+	margin-right: 15px;
+}
+#add-oppdrag #oppdragstype {
+	width: 80px !important;
+}
+#add-oppdrag #sanger {
+	width: 45px !important;
+}
+#add-oppdrag #pris {
+	width: 40px !important;
+}
+#add-oppdrag textarea {
+	height: 100px !important;
+	margin-bottom: 10px;
+}
+#add-oppdrag #kontaktperson {
+	margin-right: 8px;
+}
+#add-oppdrag #epost {
+	width: 168px !important;
+	margin-right: 8px;
+}
+#add-oppdrag #telefon {
+	width: 168px !important;
+}
+/************* Layout *************/
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#pirumlogo {
+	margin: 0;
+	border: 0;
+	margin-bottom: 30px;
+}
+
+.menu {
+	width: 150px;
+	margin: 0;
+	float: left;
+	text-align: center;
+	}
+	.menu-elem {
+		padding: 12px;
+		margin-bottom: 3px;
+		border: 1px solid black;
+		background: #f0f0f0;
+		color: black;
+		display: block;
+		text-decoration: none;
+	}
+	button.menu-elem {
+		width: 150px;
+	}
+	.menu-elem:hover{
+		background: white;
+		text-decoration:none;
+		color: black;
+}
+
+#main-content {
+	width: 780px;
+	height: 100%;
+	margin: 0;
+	margin-left: 30px;
+	border: 0;
+	float: left;
+	}
+	#main-content h1{
+		text-align: center;
+		margin-top: 95px;
+		margin-bottom: 51px;
+}
+
+/* float clearing for IE6 */
+* html .clearfix{
+	height: 1%;
+	overflow: visible;
+}
+
+/* float clearing for IE7 */
+*+html .clearfix{
+	min-height: 1%;
+}
+
+/* float clearing for everyone else */
+.clearfix:after{
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	font-size: 0;
+}
+
+/* Form layout */
+input[type=text], input[type=password], select {
+	margin-bottom: 10px !important;
+}
+.inline-label {
+	vertical-align: middle;
+	line-height: 20px;
+	margin: 0 7px 10px 15px;
+	display: inline-block;
+}
+.form-text {
+	margin-bottom: 0.5em;
+	margin-left: 180px;
+}
+
+form.largeform{
+	padding: 0;
+}
+form.largeform input[type=text]{
+	width: 390px;
+}
+form.largeform textarea {
+	height: 200px;
+	width: 416px;
+}
+
+.inline-elems .controls {
+	display: inline-block !important;
+	margin-left: 20px !important;
+}
+
+.inline-elems  .control-label.first {
+	width:  140px;
+	margin-right: 20px;
+}
+.inline-elems  .control-label {
+	width:  57px;
+	margin-right: 20px;
+}
+
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+.block {
+	display: block !important;
+}
