@@ -6,21 +6,21 @@
 	
 $textarray = array(	'Nyheter',
 					'Semesterplan',
-					'Piruloger',
+					'Piruloger',		// Denne kan fjernes
 					'Sangarkiv',
 					'Personlig konto',
 					'Tentative oppdrag');
 						
 $linkarray = array(	'./?show=news',
 					'./?show=events',
-					'./?show=piruloger',
+					'./?show=piruloger',	// Denne kan fjernes
 					'./?show=songs',
 					'./?show=personlig',
 					'./?show=tentativ');
 						
 $autharray = array(	-10,
 					-10,
-					-10,
+					-10,			// Denne kan fjernes
 					-10,
 					-10,
 					0);

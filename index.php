@@ -35,7 +35,7 @@ switch($_GET['show']) {
 		include("data/events.php");
 		$smarter->display("events.tpl.php");
 		break;
-	case "piruloger":
+	case "piruloger":					// Denne casen kan fjernes
 		$smarter->display("piruloger.tpl.php");
 		break;
 	case "songs":
