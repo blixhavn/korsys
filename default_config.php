@@ -1,6 +1,7 @@
 <?
 /******************************************
- * Global config-fil for alle tjenester
+ * Global config-fil for alle tjenester.
+ * Omdøpes til config.php når den er fylt ut
 *******************************************/
 
 
