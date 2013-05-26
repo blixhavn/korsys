@@ -7,13 +7,11 @@
 				echo "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button>
 					 Endringene er lagret.
 					</div>";
-			}
-			if($_GET['status']=='exists'){
+			} else if($_GET['status']=='exists'){
 				echo "<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>&times;</button>
 					 Brukernavn eksisterer allerede.
 					</div>";
-			}
-			else{
+			} else {
 				echo "<div class='alert alert-error'><button type='button' class='close' data-dismiss='alert'>&times;</button>
 					Feil passord.
 					</div>";
