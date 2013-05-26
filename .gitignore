@@ -1,4 +1,4 @@
 config.php
-songfiles/*
+songfiles/*.*
 piruloger/*
 templates/piruloger.tpl.php
