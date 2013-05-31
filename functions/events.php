@@ -6,8 +6,9 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 	
 	
 	global $google_cal;
-
-	$startstring = $date." ".$start.":00";
+	
+	
+		$startstring = $date." ".$start.":00";
 	$endstring = $date." ".$end.":00";
 
 	$databasedesc = str_replace("\n","<br />",$description);
