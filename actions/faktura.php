@@ -11,7 +11,7 @@ if(isLoggedIn() && $_SESSION['auth_code']>=15){
 		);
 		
 	} else if(isset($_POST['betalt'])) {
-		$query = sprintf("UPDATE faktura SET betalt = 't' WHERE faktura_id = %s",
+		$query = sprintf("UPDATE faktura SET betalt_dato = now() WHERE faktura_id = %s",
 		pg_escape_string($_POST['faktura_id'])
 		);
 	}	
