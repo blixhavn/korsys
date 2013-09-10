@@ -18,7 +18,7 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 			</form>
 			<h4>Beløp: <?=number_format($data['user_total'], 2, ',', ' ')?></h4>
 			<div id="oppforinger">
-			<h2>Siste 10 oppføringer</h2>
+			<h2>Alle oppføringer</h2>
 			<table>
 				<tr>
 					<th id="beskrivelse">Beskrivelse</th>
@@ -54,5 +54,19 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 				</div>
 				</form>
 			</div>
+			<div id="overview">
+				<br>
+				<a href="?show=admin-personlig&overview=1" class="btn btn-default">Vis oversikt</a>
+				<? if(isset($_GET['overview'])){ ?>
+				<br><br>
+				<textarea>
+<?foreach($data['persons'] as $person){
+					echo $person['first_name']."\t".$person['sum']."\n";
+				}
+				?>-------------------------
+Total <?="\t".$data['overview_total']?>
+				</textarea>
+				<?}?>
+			<div>
 		</div>
 </div>

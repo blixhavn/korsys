@@ -129,12 +129,15 @@ div#saldo {
 		margin-top: 10px;
 		font-size: 2em; 
 	}
+div#oppforinger {
+	margin-bottom: 30px;
+}
 div#oppforinger h2{
 	font-weight: bold;
 	font-size: 1.7em;
 	}
 	th#beskrivelse {
-		width: 200px;
+		width: 300px;
 		text-align:left;
 		border-bottom: 1px solid black;
 	}
@@ -143,8 +146,16 @@ div#oppforinger h2{
 		width: 70px;
 		border-bottom: 1px solid black;
 	}
+	th#dato {
+		text-align: right;
+		width: 190px;
+		border-bottom: 1px solid black;
+	}
 	td.belop {
 		text-align:right;
+	}
+	td.dato {
+		text-align: right;
 	}
 	th#bilag {
 		text-align:right;

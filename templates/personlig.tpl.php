@@ -7,16 +7,18 @@
 		<div id="saldo_val"><?=number_format($data['saldo'], 2, ',', ' ')?></div>
 	</div>
 	<div id="oppforinger">
-		<h2>Siste 10 oppføringer</h2>
+		<h2>Alle oppføringer</h2>
 		<table>
 			<tr>
 				<th id="beskrivelse">Beskrivelse</th>
 				<th id="belop">Beløp</th>
+				<th id="dato">Dato</th>
 			</tr>
 <?foreach($data['oppforinger'] as $oppforing) { ?>
 			<tr>
 				<td><?=$oppforing['description']?></td>
 				<td class="belop"><?=number_format($oppforing['amount'], 2, ',', ' ')?></td>
+				<td class="dato"><?=datetime_to_date_stor($oppforing['time'])?></td>
 			<tr>
 <? } ?>
 		</table>

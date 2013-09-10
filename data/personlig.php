@@ -5,7 +5,7 @@ $saldo_row = pg_fetch_row($saldo_result);
 
 $saldo = $saldo_row[0];
 
-$trans_query = sprintf("SELECT * FROM transactions WHERE user_id = '%s' ORDER BY time DESC LIMIT 10;", $_SESSION['user_id']);
+$trans_query = sprintf("SELECT * FROM transactions WHERE user_id = '%s' ORDER BY time DESC;", pg_escape_string($_SESSION['user_id']));
 $trans_result = pg_query($trans_query);
 
 while($trans_row = pg_fetch_assoc($trans_result)) {

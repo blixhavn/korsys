@@ -3,6 +3,7 @@ $query = "SELECT news.*, users.first_name, users.last_name FROM news JOIN users 
 $result = pg_query($query);
 
 while ($row = pg_fetch_assoc($result)) {
+	$row = str_replace("\r", "<br>", $row);
 	$news[] = $row;
 }
 $smarter->assign('news', $news);

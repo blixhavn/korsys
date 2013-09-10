@@ -59,7 +59,9 @@ Slutt: ".$end."
 Kommentar:
 ".stripslashes($description)."
 
-Med beste hilsen,
+DU KOMMER!!!
+
+Hilsen
 ".$_SESSION['first_name'];
 
 
@@ -100,7 +102,7 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 	Start: ".$start."
 	Slutt: ".$end."
 
-	Med beste hilsen,
+	Hilsen
 	".$_SESSION['first_name'];
 			
 			mail($minusemails, "Minushendelse endret: ".$title, $minusmessage, "From: ".$_SESSION['email']);
@@ -157,7 +159,7 @@ Slutt: ".$end."
 Kommentar:
 ".stripslashes($description)."
 
-Med beste hilsen,
+Hilsen
 ".$_SESSION['first_name'];
 
 
