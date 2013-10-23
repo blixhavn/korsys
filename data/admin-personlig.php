@@ -16,11 +16,15 @@ while($users_row = pg_fetch_assoc($users_result)) {
 }
 
 //Get total balance
-$total_query = "SELECT SUM(amount) FROM transactions";
+$total_query = "SELECT SUM(amount) FROM transactions t JOIN users u on t.user_id = u.user_id WHERE u.auth_code >= 0";
 $total_result = pg_query($total_query);
 $row = pg_fetch_row($total_result);
 $total = $row[0];
 
+//Get total minus
+$minustotal_query = "SELECT SUM(amount) FROM transactions t JOIN users u on t.user_id = u.user_id WHERE u.auth_code >= 0 AND t.amount < 0";
+$minustotal_result = pg_query($minustotal_query);
+$minustotal = pg_fetch_row($minustotal_result)[0];
 
 //Get transactions
 
@@ -52,6 +56,7 @@ if(isset($_GET['overview'])){
 
 $smarter->assign('users', $users);
 $smarter->assign('total', $total);
+$smarter->assign('minustotal', $minustotal);
 $smarter->assign('user_total', $user_total['sum']);
 $smarter->assign('oppforinger', $oppforinger);
 if(isset($_GET['overview'])){

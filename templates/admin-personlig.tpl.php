@@ -5,6 +5,7 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 	<h1>Administrer personlig</h1>	
 	<div id="total-balanse">
 		Total balanse: <?=belop($data['total'])?>
+		Total minus: <?=belop($data['minustotal'])?>
 	</div>
 	<div class="row">
 		<div class="span5">
