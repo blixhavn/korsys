@@ -11,27 +11,27 @@ if(isLoggedIn()){
 	$song_id = $_POST['song_id'];
 	$filename = basename($_FILES['file']['name']);
 
-	$uploaddir = './../temp_songs/';
+	$uploaddir = dirname(__FILE__) . '/../songfiles/';
 	
 	$replace_from = array('æ','ø','å', 'Æ', 'Ø', 'Å', 'é', 'è', 'ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', ' ', '	', 'î', 'ñ', 'ï');
 	$replace_to = array('ae','o','a','Ae','O','A','e','e','a','o','u','A','O','U','','','i','n','i');
 	
 	$filename = str_replace($replace_from, $replace_to, $filename);
 	
-	$valid_filetypes = array ('audio/mid', 'audio/mp3', 'audio/wav');
+	$valid_filetypes = array ('audio/midi', 'audio/mid', 'audio/mp3', 'audio/wav', 'audio/mpeg', 'audio/mpeg3');
 	$uploadfile = $uploaddir.generate_code(10).$filename;
 	
 	if(in_array($_FILES['file']['type'], $valid_filetypes)) {
 		if(is_dir($uploaddir)){
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
-				if(!chmod($uploadfile, 01777)){
+				if(!chmod($uploadfile, 0666)){
 					$err = "chmod";
 				}
 			} else {
 				$err = "file";
 			}
 
-		}else{
+		} else {
 			$err = "dir";
 		}
 	}else{
