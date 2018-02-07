@@ -1,6 +1,4 @@
 config.php
 songfiles/*.*
 !songfiles/index.html
-piruloger/*
-templates/piruloger.tpl.php
 functions/db_connect.php

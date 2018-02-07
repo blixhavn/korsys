@@ -1,8 +1,7 @@
 <?php
-/* Autentisering mot Google Calendar
+/* Authenticate to Google Calendar
 */
-require_once 'google-api-php-client/src/Google_Client.php';
-require_once 'google-api-php-client/src/contrib/Google_CalendarService.php';
+require_once 'google-api-php-client-2.2.1/vendor/autoload.php';
 
 
 /*

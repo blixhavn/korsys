@@ -1,18 +1,18 @@
 <?php
 
+define('DBUSER', '');
+define('DBPASS', '');
+define('DBSERVER', '');
+define('DBNAME', '');
 
-$HOST = "";		// Database host
-
-$DBUSER = "";			// Database user
-
-$PASS = "";			// Database password
-
-$DB = "";				// Database name
+############## Make the MySQL connection ###########
 
 
-############## Make the pgsql connection ###########
+$db = new mysqli(DBSERVER, DBUSER, DBPASS, DBNAME);
 
-$conn = mysql_connect("host=".$HOST."  user=".$DBUSER." password=".$PASS." dbname=".$DB) or  die('Could not connect !<br />Please contact the site\'s administrator.');
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
-mysql_set_charset('utf8', $conn);	// Retrieve text from DB in UTF-8
+$db->set_charset('utf8');	// Retrieve text from DB in UTF-8
 ?>
