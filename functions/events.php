@@ -1,7 +1,9 @@
 <?php
 function add_event($title, $extro, $email,$description, $date, $start, $end, $location) {
 
-  $google_client = getGoogleClient();
+	global $db;
+
+  $client = getGoogleClient();
 	$service = new Google_Service_Calendar($client);
 
 
