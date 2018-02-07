@@ -72,11 +72,11 @@ div.event {
 		color: red;
 		margin-bottom: 15px;
 	}
-	
+
 	div.minusliste {
 		margin-top: 20px;
 	}
-	
+
 	div.minusfelt {
 		text-align: center;
 		display: none;
@@ -86,7 +86,7 @@ div.event {
 			height: 100px;
 			margin-top: 15px;
 			margin-bottom: 10px;
-		}		
+		}
 
 /************* Sangarkiv *************/
 
@@ -102,7 +102,7 @@ table#songs td {
 		vertical-align: top;
 	}
 	div.songfiles {
-		margin-top: 10px;	
+		margin-top: 10px;
 		display: none;
 		}
 		div.songfile {
@@ -127,7 +127,7 @@ div#saldo {
 	}
 	div#saldo_val {
 		margin-top: 10px;
-		font-size: 2em; 
+		font-size: 2em;
 	}
 div#oppforinger {
 	margin-bottom: 30px;
@@ -254,7 +254,7 @@ div#user-total {
 /************* Oppdrag *************/
 
 .oppdrag h3 {
-	
+
 }
 
 .oppdrag .sted {
@@ -272,7 +272,7 @@ div#user-total {
 /************* Faktura *************/
 #faktura-reg h3 {
 	text-align: left;
-}	
+}
 #faktura-reg form {
 	margin: 0;
 }
@@ -439,6 +439,10 @@ form.largeform textarea {
 .ui-timepicker-rtl{ direction: rtl; }
 .ui-timepicker-rtl dl { text-align: right; }
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+.ui-datepicker {
+	font-size: 0.8em
+}
 
 .block {
 	display: block !important;

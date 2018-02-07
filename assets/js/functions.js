@@ -3,11 +3,6 @@ $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
 $('.oppdrag-notat').popover({html: true});
 $('.faktura-notat').popover({html: true});
 
-$('.utfort').click(function() {
-	alert("derp");
-    this.form.submit();
-
-});
 
 function toggleDiv(id){
 

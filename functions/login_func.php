@@ -8,7 +8,6 @@ function isLoggedIn(){
 
 function checkLogin($u, $p)
 {
-	global $seed; // global because $seed is declared in the php_header.php file
 	global $db;
 
 	//Now let us look for the user in the database.
@@ -16,7 +15,7 @@ function checkLogin($u, $p)
 		SELECT *
 		FROM users
 		WHERE username = '%s' AND password = '%s';
-		", $db->escape_string($u), $db->escape_string(sha1($p . $seed)));
+		", $db->escape_string($u), $db->escape_string(sha1($p . SEED)));
 
     	$result = $db->query($query);
 

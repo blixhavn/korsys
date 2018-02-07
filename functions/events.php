@@ -1,14 +1,10 @@
 <?php
-
 function add_event($title, $extro, $email,$description, $date, $start, $end, $location) {
-
-	//echo $title.", ".$extro.", ".$email.", desc: ".$description.", dato: ".$date.", start: ".$start.", end: ".$end.", sted: ".$location;
-
 
 	global $google_cal;
 
 
-		$startstring = $date." ".$start.":00";
+	$startstring = $date." ".$start.":00";
 	$endstring = $date." ".$end.":00";
 
 	$databasedesc = str_replace("\n","<br />",$description);

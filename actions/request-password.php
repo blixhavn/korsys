@@ -15,7 +15,7 @@
 		$user = $result->fetch_assoc();
 		$password = generate_code(8);
 		$query = sprintf("UPDATE users SET password='%s' where username = '%s';",
-			$db->escape_string(sha1($password . $seed)), $db->escape_string($u));
+			$db->escape_string(sha1($password . SEED)), $db->escape_string($u));
 		$result = $db->query($query);
 		$string = 'success';
 

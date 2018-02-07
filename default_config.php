@@ -1,13 +1,13 @@
-<?php 
+<?php
 /******************************************
- * Global config-fil for alle tjenester.
- * Omdøpes til config.php når den er fylt ut
+ * Global config-file
+ * Rename to config.php when set
 *******************************************/
 
 
 //Events
-define("EMAIL", "oystein@blixhavn.no"); 			// Epost for utsendendelse av kalenderoppdateringer osv.
-define("MINUS_EMAIL", "oystein@blixhavn.no");		// Epost for utsendelse av minus/fraværsmeldinger
+define("EMAIL", ""); 			// Address for sending calendar updates etc
+define("MINUS_EMAIL", "");		// Email address for sending absence notices
 
 //Google
 define("GOOGLE_DEV_KEY", "");
@@ -17,21 +17,24 @@ define("GCAL_SCOPE", "https%3a%2f%2fwww.googleapis.com%2fauth%2fcalendar");
 define("GCAL_CLIENT_ID", "");
 define("GCAL_CLIENT_SECRET", "");
 define("GCAL_REFRESH_TOKEN", "");
+define("GCAL_ACCESS_TOKEN", "");
 //The redirect URI is specified at Google Projects, so it must be changed there aswell.
-//It's not really used, but it is required by the API library. Should be URL-encoded.
+//It's not really used, but it is required by the API library
 define("GCAL_REDIRECT_URI", "");
 
+//Voice names
+define("VOICE_10", "1. tenor");
+define("VOICE_20", "2. tenor");
+define("VOICE_30", "1. bass");
+define("VOICE_40", "2. bass");
 
-//Stemmenavn
-define("VOICE_10", "1. sopran");			// Eks: 1. tenor
-define("VOICE_20", "2. sopran");			// Eks: 2. tenor
-define("VOICE_30", "1. alt");			// Eks: 1. bass
-define("VOICE_40", "2. alt");			// Eks: 2. bass
+// Name for old members (plural)
+define("OLD", "gamle");
 
-//Navn for gamle medlemmer (flertall)
-define("OLD", "Gamlinger");
-
+// Seed for passwords and cookie ID
 define("SEED", "");
-$seed = "884honefoss332";			// Seed for passord og cookie-ID
+
+// Set timezone
+date_default_timezone_set('UTC');
 
 ?>

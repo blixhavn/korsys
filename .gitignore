@@ -2,3 +2,5 @@ config.php
 songfiles/*.*
 !songfiles/index.html
 functions/db_connect.php
+.DS_Store
+.ftpconfig

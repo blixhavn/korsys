@@ -36,9 +36,7 @@ function cookie_login() {
 
 
 function set_cookie($username) {
-	global $seed; // global because $seed is declared in the php_header.php file
-
-	$cookie_key = sha1($username . $seed);
+	$cookie_key = sha1($username . SEED);
 	$expires_epoch = time()+60*60*24*30;
 	$expires_string = date("Y-m-d H:i:s", $expires_epoch);
 
