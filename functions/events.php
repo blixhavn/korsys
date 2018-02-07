@@ -48,8 +48,8 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 		$db->escape_string($location),
 		$createdEvent['id']
 	);
-	$row = $db->query($query)->fetch_assoc();
-	$event_id = $row['event_id'];
+	$row = $db->query($query);
+	$event_id = $db->$insert_id;
 
 
 
