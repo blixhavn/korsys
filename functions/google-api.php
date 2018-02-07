@@ -3,12 +3,34 @@
 */
 require_once 'google-api-php-client-2.2.1/vendor/autoload.php';
 
-$google_client = new Google_Client();
-$google_cal = new Google_Service_Calendar($google_client);
-$google_client->setApplicationName(APPLICATION_NAME);
-$google_client->setDeveloperKey(GOOGLE_DEV_KEY);
-$google_client->setClientId(GCAL_CLIENT_ID);
-$google_client->setClientSecret(GCAL_CLIENT_SECRET);
-$google_client->setRedirectUri(GCAL_REDIRECT_URI);
+define('SCOPES', implode(' ', array(
+  Google_Service_Calendar::CALENDAR)
+));
+
+function getGoogleClient() {
+  $client = new Google_Client();
+  $client->setApplicationName(APPLICATION_NAME);
+  $client->setScopes(SCOPES);
+  $client->setAuthConfig(CLIENT_SECRET_PATH);
+  $client->setAccessType('offline');
+
+  // Load previously authorized credentials from a file.
+  $credentialsPath = CREDENTIALS_PATH;
+  if (file_exists($credentialsPath)) {
+    $accessToken = json_decode(file_get_contents($credentialsPath), true);
+  } else {
+    // Request authorization from the user.
+    $authUrl = $client->createAuthUrl();
+    header('location: '.$authUrl);
+  }
+  $client->setAccessToken($accessToken);
+
+  // Refresh the token if it's expired.
+  if ($client->isAccessTokenExpired()) {
+    $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+    file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+  }
+  return $client;
+}
 
 ?>

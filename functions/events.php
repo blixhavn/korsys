@@ -1,7 +1,7 @@
 <?php
 function add_event($title, $extro, $email,$description, $date, $start, $end, $location) {
 
-	global $google_cal;
+  $google_cal = getGoogleClient();
 
 
 	$startstring = $date." ".$start.":00";
@@ -12,24 +12,33 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 
 
 	// Create google calendar event
-	$event = new Google_Event();
-	$event->setSummary(stripslashes($title));
-	$event->setLocation(stripslashes($location));
-	$g_start = new Google_EventDateTime();
-	$g_start->setDateTime($date."T".$start.":00");
-	$g_start->setTimeZone("Europe/Oslo");
-	$event->setStart($g_start);
-	$g_end = new Google_EventDateTime();
-	$g_end->setDateTime($date."T".$end.":00");
-	$g_end->setTimeZone("Europe/Oslo");
-	$event->setEnd($g_end);
-	$createdEvent = $google_cal->events->insert(GCAL_CAL_ID, $event);
+	$event = new Google_Service_Calendar_Event(array(
+	  'summary' => stripslashes($title),
+	  'location' => stripslashes($location),
+	  'description' => stripslashes($databasedesc),
+	  'start' => array(
+	    'dateTime' => $date."T".$start.":00",
+	    'timeZone' => TIMEZONE,
+	  ),
+	  'end' => array(
+	    'dateTime' => $date."T".$end.":00",
+	    'timeZone' => TIMEZONE,
+	  ),
+	  'reminders' => array(
+	    'useDefault' => FALSE,
+	    'overrides' => array(
+	      array('method' => 'popup', 'minutes' => 30),
+	    ),
+	  ),
+	));
+	$calendarId = 'primary';
+	$event = $google_cal->events->insert($calendarId, $event);
 
 	//Insert event into DB
 	$query = sprintf ("INSERT INTO events (title, description, event_start, event_end, event_auth_code, location, google_eid) VALUES ('%s','%s','%s','%s','%s','%s','%s') RETURNING event_id",
 
 		$db->escape_string($title),
-		$db->escape_string($databasedesc),
+		$db->escape_string($description),
 		$startstring,
 		$endstring,
 		$extro ? -10 : 0,

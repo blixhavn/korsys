@@ -35,6 +35,5 @@ define("OLD", "gamle");
 define("SEED", "");
 
 // Set timezone
-date_default_timezone_set('UTC');
-
+define("TIMEZONE", "UTC");
 ?>
