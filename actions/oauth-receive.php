@@ -1,7 +1,8 @@
 <?php
-require("php-header.php");
+require_once '../php-header.php';
 
 $authCode = $_GET['code'];
+$client = getGoogleClient($skeleton = TRUE);
 
 // Exchange authorization code for an access token.
 $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);

@@ -7,28 +7,30 @@ define('SCOPES', implode(' ', array(
   Google_Service_Calendar::CALENDAR)
 ));
 
-function getGoogleClient() {
+function getGoogleClient($skeleton = FALSE) {
   $client = new Google_Client();
   $client->setApplicationName(APPLICATION_NAME);
   $client->setScopes(SCOPES);
   $client->setAuthConfig(CLIENT_SECRET_PATH);
   $client->setAccessType('offline');
 
-  // Load previously authorized credentials from a file.
-  $credentialsPath = CREDENTIALS_PATH;
-  if (file_exists($credentialsPath)) {
-    $accessToken = json_decode(file_get_contents($credentialsPath), true);
-  } else {
-    // Request authorization from the user.
-    $authUrl = $client->createAuthUrl();
-    header('location: '.$authUrl);
-  }
-  $client->setAccessToken($accessToken);
+  if(!$skeleton) {
+    // Load previously authorized credentials from a file.
+    $credentialsPath = CREDENTIALS_PATH;
+    if (file_exists($credentialsPath)) {
+      $accessToken = json_decode(file_get_contents($credentialsPath), true);
+    } else {
+      // Request authorization from the user.
+      $authUrl = $client->createAuthUrl();
+      header('location: '.$authUrl);
+    }
+    $client->setAccessToken($accessToken);
 
-  // Refresh the token if it's expired.
-  if ($client->isAccessTokenExpired()) {
-    $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-    file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+    // Refresh the token if it's expired.
+    if ($client->isAccessTokenExpired()) {
+      $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+      file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+    }
   }
   return $client;
 }
