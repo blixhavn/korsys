@@ -17,19 +17,20 @@ function getGoogleClient($skeleton = FALSE) {
   if(!$skeleton) {
     // Load previously authorized credentials from a file.
     $credentialsPath = CREDENTIALS_PATH;
-    if (file_exists($credentialsPath)) {
+
+    try {
       $accessToken = json_decode(file_get_contents($credentialsPath), true);
-    } else {
+      $client->setAccessToken($accessToken);
+      // Refresh the token if it's expired.
+      if ($client->isAccessTokenExpired()) {
+        $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+        file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+      }
+
+    } catch (Exception $e) {
       // Request authorization from the user.
       $authUrl = $client->createAuthUrl();
       header('location: '.$authUrl);
-    }
-    $client->setAccessToken($accessToken);
-
-    // Refresh the token if it's expired.
-    if ($client->isAccessTokenExpired()) {
-      $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-      file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
     }
   }
   return $client;
