@@ -1,4 +1,5 @@
 <?php
+require("php-header.php");
 
 $authCode = $_GET['code'];
 
