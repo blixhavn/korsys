@@ -1,7 +1,7 @@
-<?
-$query= sprintf("SELECT title FROM songs WHERE song_id = '%s'", pg_escape_string($_GET['id']));
-$result = pg_query($query);
-$row = pg_fetch_row($result);
+<?php
+$query= sprintf("SELECT title FROM songs WHERE song_id = '%s'", mysql_escape_string($_GET['id']));
+$result = $conn->query($query);
+$row = $result->fetch_row();
 $songtitle = $row[0];
 
 

@@ -25,10 +25,10 @@
 				</div>
 				
 				<select name="type" id="oppdragstype">
-				  <option<?if($data['oppdrag']['oppdragstype'] == 'Alle') echo " selected "?>>Alle</option>
-				  <option<?if($data['oppdrag']['oppdragstype'] == 'Kvartett') echo " selected "?>>Kvartett</option>
-				  <option<?if($data['oppdrag']['oppdragstype'] == 'Oktett') echo " selected "?>>Oktett</option>
-				  <option<?if($data['oppdrag']['oppdragstype'] == 'Annet') echo " selected "?>>Annet</option>
+				  <option<?php if($data['oppdrag']['oppdragstype'] == 'Alle') echo " selected "?>>Alle</option>
+				  <option<?php if($data['oppdrag']['oppdragstype'] == 'Kvartett') echo " selected "?>>Kvartett</option>
+				  <option<?php if($data['oppdrag']['oppdragstype'] == 'Oktett') echo " selected "?>>Oktett</option>
+				  <option<?php if($data['oppdrag']['oppdragstype'] == 'Annet') echo " selected "?>>Annet</option>
 				</select>&nbsp;
 				<input type="text" id="sanger" placeholder="Sanger" value="<?=$data['oppdrag']['ant_sanger']?>"  name="sanger"  class="input" data-validation="validate_num">
 				&nbsp;<input type="text" id="pris" name="pris" placeholder="Pris" value="<?=$data['oppdrag']['pris']?>"  class="input" data-validation="required">

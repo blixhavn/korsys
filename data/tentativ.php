@@ -1,10 +1,10 @@
-<?
+<?php
 
 $query = sprintf("SELECT * FROM oppdrag WHERE bekreftet = 'f' AND dato > '%s' ORDER BY dato ASC", date("Y-m-d", time()));
-$result = pg_query($query);
+$result = $db->query($query);
 
-if(pg_num_rows($result) > 0) {
-	while($row = pg_fetch_assoc($result)){
+if($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()){
 		$tentativ[] = $row;
 	}
 

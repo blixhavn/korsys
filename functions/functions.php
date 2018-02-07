@@ -1,4 +1,4 @@
-<?
+<?php
 require_once(dirname(__FILE__)."/cookie.php");
 require_once(dirname(__FILE__)."/smarter.php");
 require_once(dirname(__FILE__)."/google-api.php");

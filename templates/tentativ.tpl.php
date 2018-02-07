@@ -1,6 +1,6 @@
 <div id="main-content">
 		<h1>Tentative oppdrag</h1>
-<?
+<?php 
 
 
 if(isLoggedIn() && $_SESSION['auth_code']>=0){
@@ -25,7 +25,7 @@ if(isLoggedIn() && $_SESSION['auth_code']>=0){
 					</div>
 				</div>
 			</div>
-	<?
+	<?php 
 		}
 	} else {
 		echo "Oj, ingenting å gjøre!";

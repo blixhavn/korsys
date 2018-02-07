@@ -1,6 +1,6 @@
 <div id="main-content">
 		<h1>Nyheter</h1>
-<?
+<?php 
 
 if(isset($data['news'])) {
 	foreach($data['news'] as $newspost){
@@ -11,7 +11,7 @@ if(isset($data['news'])) {
 			<p><?=$newspost['message']?></p>
 			<span class="byline">Postet <?=datetime_to_norstring($newspost['submitted'])?> av <?=$newspost['first_name']." ".$newspost['last_name']?></span>
 		</div>
-<?
+<?php 
 		}
 	}
 }

@@ -1,4 +1,4 @@
-<?
+<?php 
 isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SESSION['user_id'];
 ?>
 <div id="main-content">
@@ -12,9 +12,9 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 			<form method="get" action="./">
 			<input type="hidden" name="show" value="admin-personlig">
 			<select class="hotsubmit" name="show_user">
-				<?foreach($data['users'] as $user) {?>
-				<option<? if($select_id == $user['user_id']) echo " selected"; ?> value="<?=$user['user_id']?>"><?=$user['name']?></option>
-				<? } ?>
+				<?php foreach($data['users'] as $user) {?>
+				<option<?php  if($select_id == $user['user_id']) echo " selected"; ?> value="<?=$user['user_id']?>"><?=$user['name']?></option>
+				<?php  } ?>
 			</select>
 			</form>
 			<h4>Beløp: <?=number_format($data['user_total'], 2, ',', ' ')?></h4>
@@ -27,13 +27,13 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 					<th id="bilag">Bilag</th>
 				</tr>
 				
-		<?if(isset($data['oppforinger'])) {foreach($data['oppforinger'] as $oppforing) { ?>
+		<?php if(isset($data['oppforinger'])) {foreach($data['oppforinger'] as $oppforing) { ?>
 				<tr>
 					<td><?=$oppforing['description']?></td>
 					<td class="right"><?=belop($oppforing['amount'])?></td>
 					<td class="right"><?=$oppforing['bilag_nr']?></td>
 				<tr>
-		<? }} ?>
+		<?php  }} ?>
 				</table>
 			</div>
 		</div>
@@ -58,16 +58,16 @@ isset($_GET['show_user']) ? $select_id = $_GET['show_user'] : $select_id = $_SES
 			<div id="overview">
 				<br>
 				<a href="?show=admin-personlig&overview=1" class="btn btn-default">Vis oversikt</a>
-				<? if(isset($_GET['overview'])){ ?>
+				<?php  if(isset($_GET['overview'])){ ?>
 				<br><br>
 				<textarea>
-<?foreach($data['persons'] as $person){
+<?php foreach($data['persons'] as $person){
 					echo $person['first_name']."\t".$person['sum']."\n";
 				}
 				?>-------------------------
 Total <?="\t".$data['overview_total']?>
 				</textarea>
-				<?}?>
+				<?php }?>
 			<div>
 		</div>
 </div>

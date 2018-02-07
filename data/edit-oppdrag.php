@@ -1,6 +1,6 @@
-<?
-$query = sprintf("SELECT * FROM oppdrag WHERE oppdrag_id = '%s'", pg_escape_string($_GET['id']));
-$oppdrag = pg_fetch_assoc(pg_query($query));
+<?php
+$query = sprintf("SELECT * FROM oppdrag WHERE oppdrag_id = '%s'", $db->escape_string($_GET['id']));
+$oppdrag = $db->query($query)->fetch_assoc();
 
 $smarter->assign('oppdrag', $oppdrag);
 ?>

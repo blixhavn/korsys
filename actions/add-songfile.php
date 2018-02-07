@@ -43,14 +43,14 @@ if(isLoggedIn()){
 		
 		$query = sprintf("INSERT INTO songfiles (showing_name,link,parent_id,voice, auth_code) VALUES ('%s','%s','%s','%s','%s')",
 
-					pg_escape_string(	$showing_name													),
-					pg_escape_string(	basename($uploadfile)												),
-					pg_escape_string(	$song_id															),
-					pg_escape_string(	$_POST['stemmefil'] ? ($_POST['mainvoice'].$_POST['partvoice']) : 0	),
-					pg_escape_string(	$_POST['extro'] ? -10 : 0											)
+					mysql_escape_string(	$showing_name													),
+					mysql_escape_string(	basename($uploadfile)												),
+					mysql_escape_string(	$song_id															),
+					mysql_escape_string(	$_POST['stemmefil'] ? ($_POST['mainvoice'].$_POST['partvoice']) : 0	),
+					mysql_escape_string(	$_POST['extro'] ? -10 : 0											)
 				);
 
-		pg_query($query);
+		mysql_query($query);
 
 
 		header("location: ./../?show=songs&id=$song_id&status=success");

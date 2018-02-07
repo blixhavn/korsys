@@ -1,5 +1,5 @@
-<?
-/* Autentisering mot Google Calendar 
+<?php
+/* Autentisering mot Google Calendar
 */
 require_once 'google-api-php-client/src/Google_Client.php';
 require_once 'google-api-php-client/src/contrib/Google_CalendarService.php';
@@ -63,6 +63,7 @@ $google_client->setClientId(GCAL_CLIENT_ID);
 $google_client->setClientSecret(GCAL_CLIENT_SECRET);
 $google_client->setRedirectUri(GCAL_REDIRECT_URI);
 
+/*
 if(isset($_SESSION['google_token'])) {
 	$google_client->setAccessToken($_SESSION['google_token']);
 }
@@ -71,5 +72,5 @@ if($google_client->isAccessTokenExpired()) {
 	$google_client->refreshToken(GCAL_REFRESH_TOKEN);
 	$_SESSION['google_token'] = $google_client->getAccessToken();
 }
-
+*/
 ?>

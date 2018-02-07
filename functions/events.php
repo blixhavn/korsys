@@ -1,13 +1,13 @@
-<?
+<?php
 
 function add_event($title, $extro, $email,$description, $date, $start, $end, $location) {
-	
+
 	//echo $title.", ".$extro.", ".$email.", desc: ".$description.", dato: ".$date.", start: ".$start.", end: ".$end.", sted: ".$location;
-	
-	
+
+
 	global $google_cal;
-	
-	
+
+
 		$startstring = $date." ".$start.":00";
 	$endstring = $date." ".$end.":00";
 
@@ -28,19 +28,19 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 	$g_end->setTimeZone("Europe/Oslo");
 	$event->setEnd($g_end);
 	$createdEvent = $google_cal->events->insert(GCAL_CAL_ID, $event);
-	
+
 	//Insert event into DB
 	$query = sprintf ("INSERT INTO events (title, description, event_start, event_end, event_auth_code, location, google_eid) VALUES ('%s','%s','%s','%s','%s','%s','%s') RETURNING event_id",
 
-		pg_escape_string($title),
-		pg_escape_string($databasedesc),
+		$db->escape_string($title),
+		$db->escape_string($databasedesc),
 		$startstring,
 		$endstring,
 		$extro ? -10 : 0,
-		pg_escape_string($location),
+		$db->escape_string($location),
 		$createdEvent['id']
 	);
-	$row = pg_fetch_assoc(pg_query($query));
+	$row = $db->query($query)->fetch_assoc();
 	$event_id = $row['event_id'];
 
 
@@ -74,7 +74,7 @@ Hilsen
 function update_event($event_id, $title, $extro, $email, $description, $date, $start, $end, $location, $google_eid) {
 
 	global $google_cal;
-	
+
 	$startstring = $date." ".$start.":00";
 	$endstring = $date." ".$end.":00";
 
@@ -82,20 +82,20 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 	$description = str_replace("<br />","\n",$description);
 
 	//If the time is changed, notify people listed as minus
-	$query = sprintf("SELECT event_start FROM events WHERE event_id = %s", pg_escape_string($event_id));
-	$event = pg_fetch_assoc(pg_query($query));
+	$query = sprintf("SELECT event_start FROM events WHERE event_id = %s", $db->escape_string($event_id));
+	$event = $db->query($query)->fetch_assoc();
 	if($event['event_start'] != $startstring){
-		$query = sprintf("SELECT email FROM users JOIN minus ON users.user_id = minus.user_id WHERE minus.event_id = '%s'", pg_escape_string($event_id));
-		$result = pg_query($query);
-		if(pg_num_rows($result) > 0) {
-			while($row = pg_fetch_assoc($result)) {
+		$query = sprintf("SELECT email FROM users JOIN minus ON users.user_id = minus.user_id WHERE minus.event_id = '%s'", $db->escape_string($event_id));
+		$result = $db->query($query);
+		if(mysql_num_rows($result) > 0) {
+			while($row = $result->fetch_assoc()) {
 				$minusemails .= $row['email'].", ";
 			}
 			$minusemails = substr($minusemails, 0, -2);
 			$minusmessage = "Hei,
-			
+
 	En hendelse du er i minus på har endret tidspunkt. Sjekk om du fremdeles ikke kan.
-			
+
 	Tittel: ".stripslashes($title)."
 	Sted: ".stripslashes($location)."
 	Dato: ".datetime_to_date_stor($date)."
@@ -104,7 +104,7 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 
 	Hilsen
 	".$_SESSION['first_name'];
-			
+
 			mail($minusemails, "Minushendelse endret: ".$title, $minusmessage, "From: ".$_SESSION['email']);
 		}
 	}
@@ -122,7 +122,7 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 	$g_end->setTimeZone("Europe/Oslo");
 	$event->setEnd($g_end);
 	$updatedEvent = $google_cal->events->update(GCAL_CAL_ID, $google_eid, $event);
-	
+
 	//Update event in DB
 	$query = sprintf ("UPDATE events SET
 		title = '%s',
@@ -132,16 +132,16 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 		event_auth_code = '%s',
 		location = '%s'
 		WHERE event_id = %s",
-		
-		pg_escape_string($title),
-		pg_escape_string($databasedesc),
+
+		$db->escape_string($title),
+		$db->escape_string($databasedesc),
 		$startstring,
 		$endstring,
 		$extro ? -10 : 0,
-		pg_escape_string($location),
-		pg_escape_string($event_id)
+		$db->escape_string($location),
+		$db->escape_string($event_id)
 	);
-	pg_query($query);
+	$db->query($query);
 
 
 
@@ -170,14 +170,14 @@ Hilsen
 
 function delete_event($event_id) {
 	global $google_cal;
-	
-	$query = sprintf("SELECT google_eid FROM events WHERE event_id = '%s'", pg_escape_string($event_id));
-	$row = pg_fetch_assoc(pg_query($query));
+
+	$query = sprintf("SELECT google_eid FROM events WHERE event_id = '%s'", $db->escape_string($event_id));
+	$row = $db->query($query)->fetch_assoc();
 	$google_eid = $row['google_eid'];
 	$google_cal->events->delete(GCAL_CAL_ID, $google_eid);
-	
+
 	//Delete from database
-	$query = sprintf("DELETE FROM events WHERE event_id = '%s'", pg_escape_string($event_id));
-	pg_query($query);
+	$query = sprintf("DELETE FROM events WHERE event_id = '%s'", $db->escape_string($event_id));
+	$db->query($query);
 }
 ?>

@@ -1,6 +1,6 @@
 <div id="main-content">
 		<h1>Endre info</h1>		
-		<?
+		<?php 
 		//Show status feedback
 		if(isset($_GET['status'])){
 			if($_GET['status']=='success'){

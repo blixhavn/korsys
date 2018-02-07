@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("../php-header.php");
 
 if(isLoggedIn() && $_SESSION['auth_code']>=15){
@@ -14,34 +14,34 @@ if(isLoggedIn() && $_SESSION['auth_code']>=15){
 	$kontaktperson = 	$_POST['kontaktperson'];
 	$kontaktepost = 	$_POST['kontaktepost'];
 	$kontaktnr = 		str_replace(" ","",$_POST['kontaktnr']);
-	
+
 	//Insert into DB
 	$query = "INSERT INTO oppdrag (oppdragsgiver,sted,dato,oppdragstype,ant_sanger,pris,kontaktperson";
-	
+
 	if($kontaktepost!='') $query .= ",kontaktepost";
 	if($kontaktnr!='') $query .= ",kontaktnr";
 	if($tid!='') $query .= ",tid";
 	if($notat!='') $query .= ",notat";
-	
+
 	$query .=	sprintf(") VALUES ('%s','%s','%s','%s',%s,'%s','%s'",
 
-		pg_escape_string($oppdragsgiver),
-		pg_escape_string($sted),
-		pg_escape_string($dato),
-		pg_escape_string($type),
-		pg_escape_string($sanger),
-		pg_escape_string($pris),
-		pg_escape_string($kontaktperson)
+		$db->escape_string($oppdragsgiver),
+		$db->escape_string($sted),
+		$db->escape_string($dato),
+		$db->escape_string($type),
+		$db->escape_string($sanger),
+		$db->escape_string($pris),
+		$db->escape_string($kontaktperson)
 	);
-	
+
 	if($kontaktepost!='') $query .= sprintf(",'%s'", $kontaktepost);
 	if($kontaktnr!='') $query .= sprintf(",%s", $kontaktnr);
 	if($tid!='') $query .= sprintf(",'%s'", $tid);
 	if($notat!='') $query .= sprintf(",'%s'", $notat);
-	
+
 
 	$query .= ")";
-	pg_query($query);
+	$db->query($query);
 
 	header("Location: ./../?show=oppdrag");
 

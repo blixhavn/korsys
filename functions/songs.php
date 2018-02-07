@@ -1,4 +1,4 @@
-<?
+<?php
 
 function get_filetype($link) {
 	$parts = explode(".", $link);

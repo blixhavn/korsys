@@ -1,6 +1,6 @@
-<?
-$query = sprintf("SELECT * FROM events WHERE event_id = '%s'", pg_escape_string($_GET['id']));
-$event = pg_fetch_assoc(pg_query($query));
+<?php
+$query = sprintf("SELECT * FROM events WHERE event_id = '%s'", $db->escape_string($_GET['id']));
+$event = $db->query($query)->fetch_assoc();
 
 $smarter->assign('event_id', $event['event_id']);
 $smarter->assign('title', $event['title']);

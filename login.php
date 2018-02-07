@@ -4,7 +4,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
-	<title>Pirums interne sider</title>
+	<title>Pavlovas interne sider</title>
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
@@ -12,8 +12,8 @@
 	<form id="login" class="form-horizontal" method="post" action="./actions/login.php">
 		<fieldset>
 			<h2>Innlogging</h2>
-			
-			<?if($_GET['err']){
+
+			<?php if($_GET['err']){
 				echo "<div class='alert alert-error'>Feil brukernavn eller passord.</div>";
 			}?>
 
@@ -22,7 +22,7 @@
 			<div class="checkbox">
 			  <input type="checkbox" name="stay"> Forbli innlogget
 			</div>
-				
+
 			<button type="submit" class="btn btn-default">Logg inn</button>
 
 		</fieldset>

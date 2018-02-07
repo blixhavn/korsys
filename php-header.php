@@ -1,5 +1,13 @@
-<?
+<?php
 session_start();								//Start a session
+ini_set('display_errors', 'On');
+
+function fred($val)
+{
+  echo '<pre>';
+   print_r( $val );
+  echo '</pre>';
+}
 
 if(file_exists(dirname(__FILE__)."/config.php")){
 	require_once ("config.php");				//Include all defined configurations

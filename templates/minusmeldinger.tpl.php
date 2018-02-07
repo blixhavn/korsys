@@ -8,13 +8,13 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="minus">
-<?
+<?php 
 if(isset($data['minus'])) {
 	foreach($data['minus'] as $event){
 ?>
 			<div class="minusevent">
 				<h2><?=datetime_to_norstring_stor($event[0]['event_start'])." - ".$event[0]['title']?></h2>
-				<? foreach($event as $minusmelding){ ?>
+				<?php  foreach($event as $minusmelding){ ?>
 				<div class="minus-elem row-fluid">
 					<div class="minus-details span4">
 						<strong><?=$minusmelding['first_name']?></strong><br>
@@ -26,21 +26,21 @@ if(isset($data['minus'])) {
 				</div>
 				
 				<div class="clearfix"></div>
-				<?}?>
+				<?php }?>
 			</div>
-<?
+<?php 
 	}
 }
 ?>
 		</div>
 		<div class="tab-pane" id="tidligere">
-<?
+<?php 
 if(isset($data['tidligere'])) {
 	foreach($data['tidligere'] as $event){
 ?>
 			<div class="minusevent">
 				<h2><?=datetime_to_norstring_stor($event[0]['event_start'])." - ".$event[0]['title']?></h2>
-				<? foreach($event as $minusmelding){ ?>
+				<?php  foreach($event as $minusmelding){ ?>
 				<div class="minus-elem row-fluid">
 					<div class="minus-details span4">
 						<strong><?=$minusmelding['first_name']?></strong><br>
@@ -52,10 +52,10 @@ if(isset($data['tidligere'])) {
 				</div>
 				
 				<div class="clearfix"></div>
-				<?}?>
+				<?php }?>
 			</div>
 
-<?
+<?php 
 	}
 }
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 
 function is_minus_valid($submitted, $start) {
 	$start_date_in_epoch = strtotime(date("Y:m:d", $start)." 00:00:00");
@@ -21,4 +21,3 @@ function is_minus_valid($submitted, $start) {
 function belop($float) {
 	return number_format($float, 2, ',', ' ');
 }
-

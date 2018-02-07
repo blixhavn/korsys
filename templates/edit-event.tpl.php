@@ -31,7 +31,7 @@
 				<input type="hidden" name="google_eid"  value="<?=$data['google_eid']?>">
 				<input type="hidden" name="event_id"  value="<?=$data['event_id']?>">
 				<label class="checkbox">
-					<input type="checkbox" name="extro" <? if($data['extro'] == true) echo "checked" ?> value="checkbox">
+					<input type="checkbox" name="extro" <?php  if($data['extro'] == true) echo "checked" ?> value="checkbox">
 					Synlig for <?=OLD?>
 				</label>
 				<label class="checkbox">

@@ -1,4 +1,4 @@
-<?
+<?php
 class Smarter {
 
 	var $template_dir;
@@ -14,10 +14,10 @@ class Smarter {
 
 	function display( $template_file ) {
 		$data = $this->data;
-		
+
 		include($this->template_dir .'/header.tpl.php');
 		include($this->template_dir .'/menu.tpl.php');
-		
+
 		include( $this->template_dir .'/'. $template_file );
 
 		include($this->template_dir .'/footer.tpl.php');

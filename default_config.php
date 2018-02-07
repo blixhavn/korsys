@@ -1,4 +1,4 @@
-<?
+<?php 
 /******************************************
  * Global config-fil for alle tjenester.
  * Omdøpes til config.php når den er fylt ut
@@ -6,8 +6,8 @@
 
 
 //Events
-define("EMAIL", ""); 			// Epost for utsendendelse av kalenderoppdateringer osv. 
-define("MINUS_EMAIL", "");		// Epost for utsendelse av minus/fraværsmeldinger
+define("EMAIL", "oystein@blixhavn.no"); 			// Epost for utsendendelse av kalenderoppdateringer osv.
+define("MINUS_EMAIL", "oystein@blixhavn.no");		// Epost for utsendelse av minus/fraværsmeldinger
 
 //Google
 define("GOOGLE_DEV_KEY", "");
@@ -23,15 +23,15 @@ define("GCAL_REDIRECT_URI", "");
 
 
 //Stemmenavn
-define("VOICE_10", "");			// Eks: 1. tenor
-define("VOICE_20", "");			// Eks: 2. tenor
-define("VOICE_30", "");			// Eks: 1. bass
-define("VOICE_40", "");			// Eks: 2. bass
+define("VOICE_10", "1. sopran");			// Eks: 1. tenor
+define("VOICE_20", "2. sopran");			// Eks: 2. tenor
+define("VOICE_30", "1. alt");			// Eks: 1. bass
+define("VOICE_40", "2. alt");			// Eks: 2. bass
 
 //Navn for gamle medlemmer (flertall)
-define("OLD", "");
+define("OLD", "Gamlinger");
 
-define("SEED", "");	
-$seed = "";			// Seed for passord og cookie-ID
+define("SEED", "");
+$seed = "884honefoss332";			// Seed for passord og cookie-ID
 
 ?>

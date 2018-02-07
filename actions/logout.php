@@ -1,4 +1,4 @@
-<?
+<?php
 require("../php-header.php");
 
 session_destroy();

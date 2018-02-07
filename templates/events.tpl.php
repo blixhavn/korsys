@@ -1,6 +1,6 @@
 <div id="main-content">
 		<h1>Semesterplan</h1>
-<?
+<?php 
 
 //Show status feedback
 switch($_GET['status']){
@@ -35,21 +35,21 @@ if(isset($data['events'])) {
 					</p>
 					<div class="menu">
 						<button class="menu-elem" onClick="toggleDiv('minus_<?=$event['event_id']?>')">Minus</button>
-			<?if($_SESSION['auth_code'] >= 15) { ?>
+			<?php if($_SESSION['auth_code'] >= 15) { ?>
 						<a class="menu-elem" href="?show=edit-event&id=<?=$event['event_id']?>">Endre hendelse</a>
 						<form class="confirm" method="post" action="actions/events.php">
 							<input type="hidden" name="delete" value="<?=$event['event_id']?>">
 							<button class="menu-elem" type="submit">Slett hendelse</button>
 						</form>
-			<?}?>
+			<?php }?>
 					</div>
-			<?if(isset($data['minus'][$event['event_id']])) {
+			<?php if(isset($data['minus'][$event['event_id']])) {
 				$minus = implode(", ", $data['minus'][$event['event_id']]);?>
 					<div class="minusliste">
 						<strong>Minus:</strong>
 						<p><?=$minus?></p>
 					</div>
-			<?}?>
+			<?php }?>
 				</div>
 				<div class="span7">
 					<?=$event['description']?>
@@ -68,7 +68,7 @@ if(isset($data['events'])) {
 
 			</div>
 		</div>
-<?
+<?php 
 		}
 	}
 } else {

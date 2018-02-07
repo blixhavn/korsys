@@ -1,4 +1,4 @@
-<?
+<?php
 require("php-header.php");
 $smarter = new Smarter(dirname(__FILE__)."/templates");
 
@@ -73,8 +73,8 @@ switch($_GET['show']) {
 		include("data/oppdrag.php");
 		$smarter->display("oppdrag.tpl.php");
 		break;
-		
-	// Extra. Pages that arent in any menu	
+
+	// Extra. Pages that arent in any menu
 	case 'add-songfile':
 		include("data/add-songfile.php");
 		$smarter->display("add-songfile.tpl.php");

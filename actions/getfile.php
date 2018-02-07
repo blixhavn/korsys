@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 include("./../php-header.php");
@@ -29,5 +29,5 @@ if(isLoggedIn()){
 else{
 	header("Location: ./../");
 }
-	
+
 ?>

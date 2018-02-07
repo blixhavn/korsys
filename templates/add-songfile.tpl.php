@@ -1,6 +1,6 @@
 <div id="main-content">
 		<h1>Legg til fil</h1>		
-		<?
+		<?php 
 		if(isset($_GET['status'])){
 			if($_GET['status']=='file'){
 				echo "<div class='alert alert-error'>
@@ -51,10 +51,10 @@
 			</div>
 			<div class="controls hide" id="stemmefil">
 				<select class="span2" name="mainvoice">
-				  <option value="1" <?if(substr($_SESSION['voice'], 0, 1) == 1) echo "selected"?>><?=VOICE_10?></option>
-				  <option value="2" <?if(substr($_SESSION['voice'], 0, 1) == 2) echo "selected"?>><?=VOICE_20?></option>
-				  <option value="3" <?if(substr($_SESSION['voice'], 0, 1) == 3) echo "selected"?>><?=VOICE_30?></option>
-				  <option value="4" <?if(substr($_SESSION['voice'], 0, 1) == 4) echo "selected"?>><?=VOICE_40?></option>
+				  <option value="1" <?php if(substr($_SESSION['voice'], 0, 1) == 1) echo "selected"?>><?=VOICE_10?></option>
+				  <option value="2" <?php if(substr($_SESSION['voice'], 0, 1) == 2) echo "selected"?>><?=VOICE_20?></option>
+				  <option value="3" <?php if(substr($_SESSION['voice'], 0, 1) == 3) echo "selected"?>><?=VOICE_30?></option>
+				  <option value="4" <?php if(substr($_SESSION['voice'], 0, 1) == 4) echo "selected"?>><?=VOICE_40?></option>
 				</select>
 				<select class="span2" name="partvoice">
 				  <option value="0">Alle</option>
