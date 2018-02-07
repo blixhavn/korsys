@@ -1,7 +1,8 @@
 <?php
 function add_event($title, $extro, $email,$description, $date, $start, $end, $location) {
 
-  $google_cal = getGoogleClient();
+  $google_client = getGoogleClient();
+	$service = new Google_Service_Calendar($client);
 
 
 	$startstring = $date." ".$start.":00";
@@ -32,7 +33,7 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 	  ),
 	));
 	$calendarId = 'primary';
-	$event = $google_cal->events->insert($calendarId, $event);
+	$event = $service->events->insert($calendarId, $event);
 
 	//Insert event into DB
 	$query = sprintf ("INSERT INTO events (title, description, event_start, event_end, event_auth_code, location, google_eid) VALUES ('%s','%s','%s','%s','%s','%s','%s') RETURNING event_id",

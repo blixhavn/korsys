@@ -12,6 +12,6 @@ if(!file_exists(dirname(CREDENTIALS_PATH))) {
 }
 file_put_contents(CREDENTIALS_PATH, json_encode($accessToken));
 
-header('location: /');
+header('location: ../');
 
 ?>
