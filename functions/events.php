@@ -3,7 +3,7 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 
 	global $db;
 
-  $client = getGoogleClient();
+	$client = getGoogleClient();
 	$service = new Google_Service_Calendar($client);
 
 
@@ -34,11 +34,10 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 	    ),
 	  ),
 	));
-	$calendarId = 'primary';
-	$event = $service->events->insert($calendarId, $event);
+	$createdEvent = $service->events->insert(CALENDAR, $event);
 
 	//Insert event into DB
-	$query = sprintf ("INSERT INTO events (title, description, event_start, event_end, event_auth_code, location, google_eid) VALUES ('%s','%s','%s','%s','%s','%s','%s') RETURNING event_id",
+	$query = sprintf ("INSERT INTO events (title, description, event_start, event_end, event_auth_code, location, google_eid) VALUES ('%s','%s','%s','%s','%s','%s','%s');",
 
 		$db->escape_string($title),
 		$db->escape_string($description),
@@ -48,8 +47,8 @@ function add_event($title, $extro, $email,$description, $date, $start, $end, $lo
 		$db->escape_string($location),
 		$createdEvent['id']
 	);
-	$row = $db->query($query);
-	$event_id = $db->$insert_id;
+	$db->query($query);
+	$event_id = $db->insert_id;
 
 
 
@@ -80,8 +79,10 @@ Hilsen
 }
 
 function update_event($event_id, $title, $extro, $email, $description, $date, $start, $end, $location, $google_eid) {
+	global $db;
 
-	global $google_cal;
+  $client = getGoogleClient();
+	$service = new Google_Service_Calendar($client);
 
 	$startstring = $date." ".$start.":00";
 	$endstring = $date." ".$end.":00";
@@ -91,7 +92,9 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 
 	//If the time is changed, notify people listed as minus
 	$query = sprintf("SELECT event_start FROM events WHERE event_id = %s", $db->escape_string($event_id));
-	$event = $db->query($query)->fetch_assoc();
+	$result = $db->query($query);
+	$event = $result->fetch_assoc();
+
 	if($event['event_start'] != $startstring){
 		$query = sprintf("SELECT email FROM users JOIN minus ON users.user_id = minus.user_id WHERE minus.event_id = '%s'", $db->escape_string($event_id));
 		$result = $db->query($query);
@@ -118,18 +121,18 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 	}
 
 	// Update google calendar event
-	$event = new Google_Event($google_cal->events->get(GCAL_CAL_ID, $google_eid));
+	$event = $service->events->get(CALENDAR, $google_eid);
 	$event->setSummary(stripslashes($title));
 	$event->setLocation(stripslashes($location));
-	$g_start = new Google_EventDateTime();
+	$g_start = new Google_Service_Calendar_EventDateTime();
 	$g_start->setDateTime($date."T".$start.":00");
 	$g_start->setTimeZone("Europe/Oslo");
 	$event->setStart($g_start);
-	$g_end = new Google_EventDateTime();
+	$g_end = new Google_Service_Calendar_EventDateTime();
 	$g_end->setDateTime($date."T".$end.":00");
 	$g_end->setTimeZone("Europe/Oslo");
 	$event->setEnd($g_end);
-	$updatedEvent = $google_cal->events->update(GCAL_CAL_ID, $google_eid, $event);
+	$updatedEvent = $service->events->update(CALENDAR, $google_eid, $event);
 
 	//Update event in DB
 	$query = sprintf ("UPDATE events SET
@@ -150,7 +153,6 @@ function update_event($event_id, $title, $extro, $email, $description, $date, $s
 		$db->escape_string($event_id)
 	);
 	$db->query($query);
-
 
 
 	// Create email
@@ -177,12 +179,16 @@ Hilsen
 }
 
 function delete_event($event_id) {
-	global $google_cal;
+	global $db;
+
+  $client = getGoogleClient();
+	$service = new Google_Service_Calendar($client);
 
 	$query = sprintf("SELECT google_eid FROM events WHERE event_id = '%s'", $db->escape_string($event_id));
-	$row = $db->query($query)->fetch_assoc();
+	$result = $db->query($query);
+	$row = $result->fetch_assoc();
 	$google_eid = $row['google_eid'];
-	$google_cal->events->delete(GCAL_CAL_ID, $google_eid);
+	$service->events->delete(CALENDAR, $google_eid);
 
 	//Delete from database
 	$query = sprintf("DELETE FROM events WHERE event_id = '%s'", $db->escape_string($event_id));

@@ -9,4 +9,8 @@ require_once(dirname(__FILE__)."/minus.php");
 require_once(dirname(__FILE__)."/songs.php");
 require_once(dirname(__FILE__)."/generator.php");
 require_once(dirname(__FILE__)."/events.php");
+
+function belop($float) {
+	return number_format($float, 2, ',', ' ');
+}
 ?>

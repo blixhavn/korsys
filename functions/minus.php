@@ -17,7 +17,3 @@ function is_minus_valid($submitted, $start) {
 		}
 	}
 }
-
-function belop($float) {
-	return number_format($float, 2, ',', ' ');
-}
